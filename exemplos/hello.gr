@@ -1,0 +1,4 @@
+#Hello World
+
+use print #minha forma de importar
+alias Init: print("Hello World") #Alias Init é rodado ao executar, como um "main"

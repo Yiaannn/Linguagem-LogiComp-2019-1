@@ -1,0 +1,21 @@
+use print
+
+package fibonacci
+  int a #declarando as variáveis de inicialização do meu package
+  int b
+
+  alias _++: # o underline marca um alias com bind num operador reservado, no caso ++
+    int tmp(b)
+    b(a+b)
+    a(tmp)
+
+  parse string: #parses são chamados implicitamente quando necessário, na ausência de um parse levantar alguma espécie de erro
+    a>string #assumo que meu int por ser nativo, tem um parse para string implementado
+
+fibonacci fib(1,1)
+alias Init:
+  repeat 100:
+    ++fib
+    #se não tivesse usado um alias reservado, por exemplo "next" em vez de "_++" chamaria por fib>next
+    print(fib)
+  loop

@@ -1,0 +1,38 @@
+EBNF - Grain Language (Nome tentativo)
+  Por Alexandre Young
+
+
+<unary-operator> ::= +
+                   | -
+<binary-operator> ::= +
+                    | -
+                    | *
+                    | /
+                    | %
+<reserved_package_call> ::= ++
+                          | --
+
+<import> ::= use <package-name>
+
+<alias-definition> alias <alias-name>: <statement>
+<alias-call> ::= !<alias-name>
+
+<loop> ::= repeat <integer-constant> <statement> loop
+        |= repeat <conditional> loop
+<conditional> ::= <conditional-expression> : <statement> done
+
+<native-package-type> ::= int
+                        | float
+                        | string
+<package-definition> ::= package <package-name>: <package-declaration>* <alias-declaration>* <parse-rule>
+<package-declaration> ::= <package-type>( <package-expression> {, package-expression}* )
+<package-call> ::= <package-name>\><alias-call>
+                 | <reserved-package-call><package-name>
+<package-expression> ::= {unary-operator}* <package-value> {<binary-operator> <package-value>}*
+<package-value>::= <package-constant>
+                 | <package-name>
+                 | <package-call>
+<package-type> ::= <native-package-type>
+                 | <defined-package-type>
+
+<parse-definition> ::= parse <package-type>: <package-expression>

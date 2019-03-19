@@ -1,0 +1,15 @@
+use print
+int a(0)
+int b(1)
+int tmp
+
+alias Fibonacci:
+  tmp(b)
+  b(a+b)
+  a(tmp)
+
+alias Init:
+  repeat 100:
+    !Fibonacci:
+    print(a)
+  loop
